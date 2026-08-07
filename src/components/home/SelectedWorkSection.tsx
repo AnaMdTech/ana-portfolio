@@ -36,45 +36,58 @@ export default function SelectedWorkSection({
   projects?: ProjectItem[];
 }) {
   return (
-    <section className="bg-[#09090B] text-white px-8 pt-12 lg:px-32">
-      <div className="flex flex-col gap-10">
+    <section className="bg-[#09090B] text-white px-8 pt-16 pb-20 lg:px-32">
+      <div className="flex flex-col gap-12">
+        {/* Section Header */}
         <div>
-          <p className="text-blue-600 text-lg lg:text-2xl mb-1.5 font-medium">
+          <p className="text-blue-600 text-lg lg:text-2xl mb-2 font-medium tracking-wide">
             Let me show you
           </p>
-          <h2 className="text-6xl lg:text-7xl font-bold">Selected work</h2>
+          <h2 className="text-5xl lg:text-7xl font-bold tracking-tight">
+            Selected work
+          </h2>
         </div>
 
-        <div className="flex flex-col gap-16">
+        {/* Project List */}
+        <div className="flex flex-col gap-20">
           {projects.map((project, idx) => {
             const isEven = idx % 2 !== 0;
             return (
               <div
                 key={project.id}
-                className={`flex flex-col gap-6 ${isEven ? "lg:items-end" : ""}`}
+                className={`flex flex-col gap-6 group ${
+                  isEven ? "lg:items-end" : ""
+                }`}
               >
-                <div className="relative w-full md:max-w-3xl h-[400px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
+                {/* Image Container with Full Visibility & Hover Zoom */}
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="relative w-full md:max-w-3xl h-[320px] md:h-[420px] lg:h-[480px] bg-gradient-to-b from-[#131315] to-[#0d0d0f] rounded-3xl overflow-hidden border border-gray-800/80 transition-all duration-500 group-hover:border-gray-600 shadow-xl"
+                >
                   <Image
                     src={project.imageUrl}
                     alt={project.title}
                     fill
-                    className="object-cover cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.44,0,0.56,1)] hover:brightness-80"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
+                    className="rounded-2xl w-full cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.44,0,0.56,1)] hover:brightness-80"
                   />
-                </div>
+                </Link>
 
-                <div className="flex flex-col gap-4 md:justify-between md:flex-row md:items-center md:w-[700px] lg:max-w-3xl w-full">
+                {/* Project Details & CTA Bar */}
+                <div className="flex flex-col gap-4 md:justify-between md:flex-row md:items-center md:w-[700px] lg:max-w-3xl w-full px-2">
                   <div>
-                    <h3 className="text-3xl mb-1 font-semibold">
+                    <h3 className="text-3xl lg:text-4xl mb-1.5 font-bold tracking-tight group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-lg opacity-50">
+                    <p className="text-lg opacity-60 font-inter">
                       {project.role} · {project.year}
                     </p>
                   </div>
+
                   <div>
                     <Link
                       href={`/work/${project.slug}`}
-                      className="w-full md:w-auto inline-block cursor-pointer hover:bg-transparent transition-all duration-300 border-2 border-gray-500 text-xl rounded-full bg-[rgba(255,255,255,0.1)] backdrop-blur py-3 lg:px-8 px-6 text-center"
+                      className="w-full md:w-auto inline-block cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border-2 border-gray-600 hover:border-white text-lg lg:text-xl font-medium rounded-full bg-white/[0.05] backdrop-blur-md py-3 lg:px-9 px-7 text-center shadow-md"
                     >
                       See case
                     </Link>
