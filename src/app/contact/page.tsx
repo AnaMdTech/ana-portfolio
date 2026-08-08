@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import PageHeader from "@/components/shared/PageHeader";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -67,11 +68,7 @@ export default function ContactPage() {
   return (
     <section className="bg-[#09090B] text-white min-h-screen pb-32">
       {/* 1. Massive Page Header */}
-      <div className="text-center pt-28 md:pt-40 pb-16 md:pb-24 px-6">
-        <h1 className="text-[80px] leading-[80px] md:text-[130px] md:leading-[120px] lg:text-[150px] lg:leading-[140px] xl:text-[180px] xl:leading-[160px] font-bold tracking-tight">
-          Contact
-        </h1>
-      </div>
+      <PageHeader title="Contact" />
 
       {/* 2. Main Contact Container */}
       <div className="flex flex-col px-6 md:px-12 lg:px-32 xl:px-60 max-w-[1440px] mx-auto gap-16">

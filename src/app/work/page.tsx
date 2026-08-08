@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageHeader from "@/components/shared/PageHeader";
 
 export const metadata: Metadata = {
   title: "Selected Work | AnaMdTech",
@@ -57,11 +58,7 @@ export default function WorkPage() {
   return (
     <section className="bg-[#09090B] text-white min-h-screen pb-32">
       {/* Massive Page Heading */}
-      <div className="text-center pt-28 md:pt-40 pb-20 md:pb-40 px-6">
-        <h1 className="text-[64px] leading-[70px] md:text-[120px] md:leading-[110px] lg:text-[150px] lg:leading-[140px] xl:text-[200px] xl:leading-[160px] font-bold tracking-tight">
-          <span className="text-[#71717a]">Selected</span> work
-        </h1>
-      </div>
+      <PageHeader accent="Selected" title="work" />
 
       {/* Responsive 2-Column Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1600px] mx-auto">

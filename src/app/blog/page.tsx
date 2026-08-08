@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageHeader from "@/components/shared/PageHeader";
 
 export const metadata: Metadata = {
   title: "Engineering & Founder Blog | AnaMdTech",
@@ -75,11 +76,7 @@ export default function BlogPage() {
   return (
     <section className="bg-[#09090B] text-white min-h-screen pb-32">
       {/* Massive Page Header */}
-      <div className="text-center pt-28 md:pt-40 pb-20 md:pb-28 px-6">
-        <h1 className="text-[64px] leading-[70px] md:text-[120px] md:leading-[110px] lg:text-[150px] lg:leading-[140px] xl:text-[200px] xl:leading-[160px] font-bold tracking-tight">
-          <span className="text-[#71717a]">Latest</span> updates
-        </h1>
-      </div>
+      <PageHeader accent="Latest" title="updates" />
 
       {/* Editorial Blog Grid */}
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10 xl:px-0">

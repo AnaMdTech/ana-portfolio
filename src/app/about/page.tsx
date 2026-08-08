@@ -32,10 +32,10 @@ export default function AboutPage() {
     <section className="bg-[#09090B] text-white min-h-screen pb-32">
       {/* 1. Page Header & Editorial Bio */}
       <div className="flex flex-col justify-between md:flex-row gap-10 lg:px-10 max-w-[1280px] md:px-[50px] pt-32 md:pt-40 px-6 pb-20 xl:pt-44 xl:pb-28 xl:px-0 xl:gap-24 xl:mx-auto">
-        <h1 className="lg:w-1/2 text-[80px] leading-[80px] md:text-[110px] md:leading-[110px] lg:text-[130px] lg:leading-[120px] xl:text-[160px] xl:leading-[150px] font-bold tracking-tight">
+        <h1 className="lg:w-1/2 text-[80px] leading-[80px] md:text-[110px] md:leading-[110px] lg:text-[130px] lg:leading-[120px] xl:text-[160px] xl:leading-[150px] font-bold tracking-tight animate-fade-in-left">
           About
         </h1>
-        <div className="lg:w-1/2 flex flex-col gap-6">
+        <div className="lg:w-1/2 flex flex-col gap-6 animate-fade-in-right">
           <p className="text-xl md:text-2xl leading-relaxed lg:text-3xl lg:leading-normal text-gray-200 font-medium">
             Hey, I’m Ana Mohammed, a full-stack software developer, digital
             creator, and tech founder from{" "}
