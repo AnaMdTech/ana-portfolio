@@ -41,13 +41,15 @@ export default function FaqAccordion() {
   };
 
   return (
-    <section className="bg-[#09090B] text-white px-6 py-20 lg:px-32">
+    <section className="faq-section">
       <div className="flex flex-col gap-10">
+        {/* Section Header */}
         <div>
-          <p className="text-blue-600 text-lg mb-1.5 font-medium">FAQ</p>
-          <h2 className="text-6xl font-bold">Most asked questions</h2>
+          <p className="faq-subtitle">FAQ</p>
+          <h2 className="faq-title">Most asked questions</h2>
         </div>
 
+        {/* Accordion Items */}
         <div>
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
@@ -55,26 +57,25 @@ export default function FaqAccordion() {
               <div
                 key={idx}
                 onClick={() => toggleFaq(idx)}
-                className="cursor-pointer py-8 border-b-2 border-gray-800 transition-colors hover:border-gray-600"
+                className="faq-item-row"
               >
                 <div className="flex justify-between items-center">
-                  <p className="text-2xl text-gray-200 font-medium">{item.q}</p>
+                  <p className="faq-question-text">{item.q}</p>
                   <span
-                    className={`text-3xl text-white transform transition-transform duration-300 ${
+                    className={`faq-arrow-icon ${
                       isOpen ? "rotate-0" : "rotate-180"
                     }`}
                   >
                     ↑
                   </span>
                 </div>
+
                 <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  className={`faq-answer-wrapper ${
                     isOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="text-lg text-gray-400 leading-relaxed">
-                    {item.a}
-                  </p>
+                  <p className="faq-answer-text">{item.a}</p>
                 </div>
               </div>
             );

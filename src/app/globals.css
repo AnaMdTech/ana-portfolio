@@ -100,6 +100,180 @@
   .page-header-note {
     @apply text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed font-medium;
   }
+
+  /* --- HERO SECTION UTILITIES --- */
+  .hero-wrapper {
+    @apply relative w-full h-screen bg-[url('/assets/images/hero.jpg')] bg-cover bg-center shadow-md shadow-black flex items-center justify-center overflow-hidden;
+  }
+
+  .hero-content {
+    @apply absolute z-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white flex flex-col items-center gap-8 lg:gap-10 w-11/12 md:w-4/5 lg:w-3/5;
+  }
+
+  .hero-badge {
+    @apply relative mb-1 text-sm border border-gray-800 px-4 py-2 rounded-full font-inter before:content-[''] before:w-3 before:h-3 before:bg-green-500 before:rounded-full before:absolute before:left-4 before:top-1/2 before:-translate-y-1/2 pl-9 w-auto max-w-64 bg-black/30 backdrop-blur-sm;
+  }
+
+  .hero-title {
+    @apply text-5xl leading-tight md:text-7xl lg:text-[84px] lg:leading-[94px] font-custom font-bold tracking-tight;
+  }
+
+  .hero-subtitle {
+    @apply text-lg lg:text-2xl font-custom opacity-70 max-w-xl;
+  }
+
+  .hero-gradient-bottom {
+    @apply absolute z-10 bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-[#09090B] pointer-events-none;
+  }
+
+  /* --- REUSABLE CTA GLASS BUTTON --- */
+  .btn-hero-cta {
+    @apply cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border-2 border-gray-500 hover:border-white text-lg lg:text-xl rounded-full bg-[rgba(255,255,255,0.08)] backdrop-blur-md py-3.5 px-9 font-medium text-gray-200 text-center shadow-lg;
+  }
+
+  /* --- SERVICES SECTION UTILITIES --- */
+  .services-section {
+    @apply bg-[#09090B] text-white py-20;
+  }
+
+  .services-container {
+    @apply px-8 lg:px-32 max-w-[1600px] mx-auto;
+  }
+
+  .services-grid {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+  }
+
+  .service-card {
+    @apply bg-[#131315] border border-gray-800 rounded-4xl shadow-md overflow-hidden hover:shadow-lg hover:border-gray-700 transition-all duration-300 h-[500px] pl-10 pt-10 flex flex-col gap-6;
+  }
+
+  .service-title {
+    @apply text-white text-2xl font-inter mb-2 font-semibold group-hover:text-blue-400 transition-colors duration-200;
+  }
+
+  .service-desc {
+    @apply text-gray-500 mb-6 text-lg font-inter;
+  }
+
+  .service-img-wrapper {
+    @apply relative w-full flex-grow;
+  }
+
+  .service-img-inner {
+    @apply relative w-full h-full bg-gray-900 rounded-tl-2xl border-t border-l border-gray-800 flex items-center justify-center text-gray-600 text-sm overflow-hidden;
+  }
+
+  .service-img {
+    @apply object-cover rounded-tl-2xl transition-transform duration-500 group-hover:scale-105;
+  }
+
+  /* --- TECH MARQUEE UTILITIES --- */
+  .marquee-section {
+    @apply bg-[#09090B] text-white py-20 overflow-hidden;
+  }
+
+  .marquee-row-wrapper {
+    @apply relative w-full overflow-hidden mx-auto font-custom;
+  }
+
+  .marquee-fade-overlay {
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-r from-[#09090B] via-transparent to-[#09090B];
+  }
+
+  .tech-badge {
+    @apply flex flex-col items-center justify-center bg-[rgba(255,255,255,0.07)] border border-white/10 p-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition-all duration-500 hover:scale-110 hover:bg-[rgba(255,255,255,0.15)] hover:border-white/30 min-w-[110px];
+  }
+
+  .tech-badge-icon {
+    @apply w-8 h-8 mb-2.5 relative flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5;
+  }
+
+  .tech-badge-label {
+    @apply text-xs text-slate-200 font-medium tracking-wide group-hover:text-white transition-colors;
+  }
+
+  /* --- SELECTED WORK SECTION UTILITIES --- */
+  .work-section {
+    @apply bg-[#09090B] text-white px-8 pt-16 pb-20 lg:px-32;
+  }
+
+  .work-header-subtitle {
+    @apply text-blue-600 text-lg lg:text-2xl mb-2 font-medium tracking-wide;
+  }
+
+  .work-header-title {
+    @apply text-5xl lg:text-7xl font-bold tracking-tight;
+  }
+
+  .work-list-wrapper {
+    @apply flex flex-col gap-20 mt-12;
+  }
+
+  /* Forces the row wrapper to take 100% width and align children left or right based on lg:items-start / lg:items-end */
+  .work-item-wrapper {
+    @apply flex flex-col gap-6 w-full;
+  }
+
+  /* Fixed width on desktop (700px / 840px) so it leaves empty space on the opposite side */
+  .work-img-container {
+    @apply relative w-full lg:w-[700px] xl:w-[840px] h-[320px] md:h-[420px] lg:h-[480px] bg-gradient-to-b from-[#131315] to-[#0d0d0f] rounded-3xl overflow-hidden border border-gray-800/80 transition-all duration-500 group-hover:border-gray-600 shadow-xl;
+  }
+
+  /* Matches the exact width of the image container so the text bar aligns with the card edge */
+  .work-info-bar {
+    @apply flex flex-col gap-4 md:justify-between md:flex-row md:items-center w-full lg:w-[700px] xl:w-[840px] px-2;
+  }
+
+  .work-img {
+    @apply object-cover rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.44,0,0.56,1)] group-hover:brightness-80 group-hover:scale-105;
+  }
+
+  .work-title {
+    @apply text-3xl lg:text-4xl mb-1.5 font-bold tracking-tight group-hover:text-blue-400 transition-colors duration-300;
+  }
+
+  .work-meta {
+    @apply text-lg opacity-60 font-inter;
+  }
+
+  /* --- REUSABLE "SEE CASE" GLASS BUTTON --- */
+  .btn-case-cta {
+    @apply w-full md:w-auto inline-block cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border border-gray-600 hover:border-white text-lg lg:text-xl font-medium rounded-full bg-white/[0.06] backdrop-blur-md py-3 lg:px-9 px-7 text-center shadow-md;
+  }
+
+  /* --- FAQ SECTION UTILITIES --- */
+  .faq-section {
+    @apply bg-[#09090B] text-white px-6 py-20 lg:px-32 max-w-[1600px] mx-auto;
+  }
+
+  .faq-subtitle {
+    @apply text-blue-600 text-lg mb-1.5 font-medium tracking-wide;
+  }
+
+  .faq-title {
+    @apply text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .faq-item-row {
+    @apply cursor-pointer py-8 border-b-2 border-gray-800 transition-colors hover:border-gray-600;
+  }
+
+  .faq-question-text {
+    @apply text-xl md:text-2xl text-gray-200 font-medium pr-4;
+  }
+
+  .faq-arrow-icon {
+    @apply text-3xl text-white transform transition-transform duration-300 shrink-0;
+  }
+
+  .faq-answer-wrapper {
+    @apply overflow-hidden transition-all duration-300 ease-in-out;
+  }
+
+  .faq-answer-text {
+    @apply text-lg text-gray-400 leading-relaxed;
+  }
 }
 
 /* Custom Infinite Marquee Animations */
