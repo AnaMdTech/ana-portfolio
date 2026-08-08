@@ -2,19 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-  // Track scroll position to morph from Full Width -> Sticky Glass Pill
+  const isActive = (path: string) =>
+    pathname === path || pathname.startsWith(`${path}/`);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,20 +26,14 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Header Container that morphs on scroll */}
+      {/* Scroll-Morphing Header */}
       <header
-        className={`fixed left-1/2 -translate-x-1/2 z-[9999] flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-          isScrolled
-            ? "top-4 w-[92%] max-w-5xl px-6 py-3 bg-white/[0.08] backdrop-blur-xl border border-white/15 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
-            : "top-0 w-full px-8 lg:px-14 py-6 bg-transparent border-transparent rounded-none"
+        className={`navbar-base ${
+          isScrolled ? "navbar-pill" : "navbar-full"
         }`}
       >
-        {/* 1. Brand Logo (Left) */}
-        <Link
-          href="/"
-          onClick={closeMenu}
-          className="z-[9999] shrink-0 flex items-center"
-        >
+        {/* 1. Brand Logo */}
+        <Link href="/" onClick={closeMenu} className="nav-logo">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 140 50"
@@ -73,50 +67,53 @@ export default function Navbar() {
           </svg>
         </Link>
 
-        {/* 2. Desktop Navigation Links (Middle - PC/Tablet only) */}
-        <nav className="hidden md:flex items-center gap-8 lg:gap-10 z-[9999]">
+        {/* 2. Desktop Navigation Links */}
+        <nav className="nav-desktop-menu">
           <Link
             href="/work"
-            className="text-sm lg:text-base font-medium text-white/80 hover:text-white hover:scale-105 transition duration-200"
+            className={`nav-link ${isActive("/work") ? "nav-link-active" : ""}`}
           >
             Work
           </Link>
           <Link
             href="/about"
-            className="text-sm lg:text-base font-medium text-white/80 hover:text-white hover:scale-105 transition duration-200"
+            className={`nav-link ${
+              isActive("/about") ? "nav-link-active" : ""
+            }`}
           >
             About
           </Link>
           <Link
             href="/blog"
-            className="text-sm lg:text-base font-medium text-white/80 hover:text-white hover:scale-105 transition duration-200"
+            className={`nav-link ${isActive("/blog") ? "nav-link-active" : ""}`}
           >
             Blog
           </Link>
           <Link
             href="/contact"
-            className="text-sm lg:text-base font-medium text-white/80 hover:text-white hover:scale-105 transition duration-200"
+            className={`nav-link ${
+              isActive("/contact") ? "nav-link-active" : ""
+            }`}
           >
             Contact
           </Link>
         </nav>
 
-        {/* 3. Right Section: Download CV Button (Desktop) + Hamburger Icon (Mobile) */}
-        <div className="flex items-center gap-3 z-[9999] shrink-0">
+        {/* 3. Actions: Download CV + Hamburger Icon */}
+        <div className="nav-actions">
           <a
             href="/ana-mohammed-Resume.pdf"
             download
-            className={`hidden md:flex items-center justify-center text-white cursor-pointer hover:bg-white/20 transition-all duration-300 border border-white/20 rounded-full bg-white/10 backdrop-blur-md font-medium shadow-inner ${
+            className={`btn-glass hidden md:inline-flex ${
               isScrolled ? "py-1.5 px-5 text-sm" : "py-2.5 px-6 text-base"
             }`}
           >
             Download CV
           </a>
 
-          {/* Hamburger Menu Button (Mobile only) */}
           <button
             type="button"
-            className="md:hidden text-white p-2 focus:outline-none rounded-full hover:bg-white/10 transition"
+            className="nav-hamburger-btn"
             aria-label="Toggle Menu"
             onClick={toggleMenu}
           >
@@ -137,9 +134,9 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* 4. Mobile Navigation Drawer with Eclipse Circular Expand/Collapse */}
+      {/* 4. Mobile Navigation Drawer */}
       <div
-        className="fixed inset-0 z-[9990] bg-black/90 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden transition-[clip-path,opacity] duration-700 ease-[cubic-bezier(0.77,0,0.175,1)]"
+        className="mobile-drawer-overlay"
         style={{
           clipPath: isMobileMenuOpen
             ? "circle(150% at 90% 40px)"
@@ -148,12 +145,14 @@ export default function Navbar() {
           pointerEvents: isMobileMenuOpen ? "auto" : "none",
         }}
       >
-        <ul className="flex flex-col items-center gap-8 text-center">
+        <ul className="mobile-drawer-list">
           <li>
             <Link
               href="/work"
               onClick={closeMenu}
-              className="text-3xl font-semibold text-white hover:text-blue-400 transition"
+              className={`mobile-nav-link ${
+                isActive("/work") ? "mobile-nav-link-active" : ""
+              }`}
             >
               Work
             </Link>
@@ -162,7 +161,9 @@ export default function Navbar() {
             <Link
               href="/about"
               onClick={closeMenu}
-              className="text-3xl font-semibold text-white hover:text-blue-400 transition"
+              className={`mobile-nav-link ${
+                isActive("/about") ? "mobile-nav-link-active" : ""
+              }`}
             >
               About
             </Link>
@@ -171,7 +172,9 @@ export default function Navbar() {
             <Link
               href="/blog"
               onClick={closeMenu}
-              className="text-3xl font-semibold text-white hover:text-blue-400 transition"
+              className={`mobile-nav-link ${
+                isActive("/blog") ? "mobile-nav-link-active" : ""
+              }`}
             >
               Blog
             </Link>
@@ -180,7 +183,9 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={closeMenu}
-              className="text-3xl font-semibold text-white hover:text-blue-400 transition"
+              className={`mobile-nav-link ${
+                isActive("/contact") ? "mobile-nav-link-active" : ""
+              }`}
             >
               Contact
             </Link>
@@ -190,7 +195,7 @@ export default function Navbar() {
               href="/ana-mohammed-Resume.pdf"
               download
               onClick={closeMenu}
-              className="inline-block text-white border border-white/20 rounded-full bg-white/10 backdrop-blur-md py-3.5 px-10 text-lg font-medium shadow-lg"
+              className="btn-glass py-3.5 px-10 text-lg shadow-lg"
             >
               Download CV
             </a>
