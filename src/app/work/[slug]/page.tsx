@@ -130,9 +130,9 @@ export default async function WorkDetailPage({
   }
 
   return (
-    <article className="bg-[#09090B] text-white min-h-screen pb-32">
+    <article className="case-article">
       {/* 1. Hero Cover Section */}
-      <div className="relative w-full h-[70vh] md:h-[85vh] flex items-end justify-start overflow-hidden">
+      <div className="case-hero-container">
         <Image
           src={project.heroImage}
           alt={project.title}
@@ -142,63 +142,45 @@ export default async function WorkDetailPage({
           className="object-cover object-center"
         />
 
-        <div className="absolute inset-0 bg-black/40 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/60 to-transparent z-[2]" />
+        <div className="case-hero-overlay-dark" />
+        <div className="case-hero-overlay-gradient" />
 
-        <div className="relative z-[5] w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 pb-12 md:pb-16">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 text-sm md:text-base text-gray-400 hover:text-white transition-colors mb-6 group"
-          >
+        <div className="case-hero-content">
+          <Link href="/work" className="case-back-link group">
             <span className="transform transition-transform group-hover:-translate-x-1">
               ←
             </span>
             Back to all work
           </Link>
-          <h1 className="text-5xl md:text-7xl lg:text-[100px] xl:text-[130px] font-bold leading-tight tracking-tight">
-            {project.title}
-          </h1>
+          <h1 className="case-hero-title">{project.title}</h1>
         </div>
       </div>
 
       {/* 2. Responsive 2-Column Case Study Content */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 pt-12 md:pt-20 flex flex-col md:flex-row gap-12 lg:gap-24">
-        {/* Left Sidebar: Client / Role / Year / EXACT CTA Button */}
-        <aside className="md:w-1/3 lg:w-1/4 flex flex-col gap-8 md:sticky md:top-32 md:self-start">
+      <div className="case-body-container">
+        {/* Left Sidebar: Client / Role / Year / CTA Button */}
+        <aside className="case-sidebar">
           <div>
-            <p className="text-[#6366f1] text-lg md:text-xl font-medium mb-1">
-              Client
-            </p>
-            <p className="text-xl md:text-2xl font-semibold text-gray-100">
-              {project.client}
-            </p>
+            <p className="case-sidebar-label">Client</p>
+            <p className="case-sidebar-value">{project.client}</p>
           </div>
 
           <div>
-            <p className="text-[#6366f1] text-lg md:text-xl font-medium mb-1">
-              Role
-            </p>
-            <p className="text-xl md:text-2xl font-semibold text-gray-100">
-              {project.role}
-            </p>
+            <p className="case-sidebar-label">Role</p>
+            <p className="case-sidebar-value">{project.role}</p>
           </div>
 
           <div>
-            <p className="text-[#6366f1] text-lg md:text-xl font-medium mb-1">
-              Year
-            </p>
-            <p className="text-xl md:text-2xl font-semibold text-gray-100">
-              {project.year}
-            </p>
+            <p className="case-sidebar-label">Year</p>
+            <p className="case-sidebar-value">{project.year}</p>
           </div>
 
-          {/* Guaranteed to render on all projects now */}
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-white text-center w-full cursor-pointer hover:bg-transparent transition-all duration-300 border-[1px] text-[18px] leading-[32px] font-inter border-[rgba(255,255,255,0.1)] rounded-full bg-[rgba(255,255,255,0.08)] backdrop-blur-[8px] py-[12px] px-[32px]"
+              className="btn-case-live"
             >
               Go to live website
             </a>
@@ -206,25 +188,21 @@ export default async function WorkDetailPage({
         </aside>
 
         {/* Right Main Column: Narrative, Breakdown & Screenshots */}
-        <div className="md:w-2/3 lg:w-3/4 flex flex-col gap-10 text-gray-300">
-          <p className="text-xl md:text-2xl lg:text-[26px] leading-relaxed text-white font-medium">
-            {project.overview}
-          </p>
+        <div className="case-main-content">
+          <p className="case-overview-text">{project.overview}</p>
 
-          <div className="text-lg md:text-xl leading-relaxed text-gray-400 flex flex-col gap-6">
+          <div className="case-narrative-wrapper">
             <p>
               In the world of high-performance digital products, a website must
               not only reflect the brand’s energy but also deliver an intuitive,
               compelling experience that keeps visitors hooked.
             </p>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-white mt-6">
-              Challenges
-            </h3>
+            <h3 className="case-section-heading">Challenges</h3>
             <p>{project.challenges}</p>
 
             {project.galleryImages[0] && (
-              <div className="relative w-full h-[300px] md:h-[480px] lg:h-[560px] rounded-2xl overflow-hidden border border-gray-800 my-4 bg-[#131315]">
+              <div className="case-gallery-box">
                 <Image
                   src={project.galleryImages[0]}
                   alt={`${project.title} screenshot 1`}
@@ -235,18 +213,14 @@ export default async function WorkDetailPage({
               </div>
             )}
 
-            <h3 className="text-2xl md:text-3xl font-bold text-white mt-6">
-              Solution
-            </h3>
+            <h3 className="case-section-heading">Solution</h3>
             <p>{project.solution}</p>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-white mt-6">
-              Results
-            </h3>
+            <h3 className="case-section-heading">Results</h3>
             <p>{project.results}</p>
 
             {project.galleryImages[1] && (
-              <div className="relative w-full h-[300px] md:h-[480px] lg:h-[560px] rounded-2xl overflow-hidden border border-gray-800 my-4 bg-[#131315]">
+              <div className="case-gallery-box">
                 <Image
                   src={project.galleryImages[1]}
                   alt={`${project.title} screenshot 2`}
@@ -257,9 +231,7 @@ export default async function WorkDetailPage({
               </div>
             )}
 
-            <h3 className="text-2xl md:text-3xl font-bold text-white mt-6">
-              Conclusion
-            </h3>
+            <h3 className="case-section-heading">Conclusion</h3>
             <p>{project.conclusion}</p>
           </div>
         </div>

@@ -56,44 +56,36 @@ const WORK_PROJECTS: WorkProject[] = [
 
 export default function WorkPage() {
   return (
-    <section className="bg-[#09090B] text-white min-h-screen pb-32">
+    <section className="work-page-section">
       {/* Massive Page Heading */}
       <PageHeader accent="Selected" title="work" />
 
       {/* Responsive 2-Column Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1600px] mx-auto">
+      <div className="work-grid-container">
         {WORK_PROJECTS.map((project) => (
-          <div key={project.id} className="flex flex-col gap-8 group">
-            {/* Project Image Box - object-contain ensures 0% cropping */}
-            <Link
-              href={`/work/${project.slug}`}
-              className="relative w-full h-[320px] md:h-[400px] lg:h-[460px] bg-gradient-to-b from-[#131315] to-[#0c0c0e] rounded-3xl overflow-hidden border border-gray-800/80 transition-all duration-500 group-hover:border-gray-600 shadow-xl"
-            >
+          <div key={project.id} className="work-card-wrapper group">
+            {/* Project Image Box */}
+            <Link href={`/work/${project.slug}`} className="work-card-img-box">
               <Image
                 src={project.imageUrl}
                 alt={project.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="rounded-2xl w-full cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.44,0,0.56,1)] hover:brightness-80"
+                className="work-card-img"
               />
             </Link>
 
             {/* Title, Role, Year & Case Study CTA Button */}
-            <div className="flex flex-col gap-5 lg:flex-row lg:items-center justify-between">
+            <div className="work-card-footer">
               <div>
-                <h3 className="text-3xl lg:text-4xl mb-1.5 font-bold tracking-tight group-hover:text-blue-400 transition-colors duration-300">
-                  {project.title}
-                </h3>
-                <p className="text-md opacity-60 font-inter">
+                <h3 className="work-title">{project.title}</h3>
+                <p className="work-meta">
                   {project.role} · {project.year}
                 </p>
               </div>
 
               <div>
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="w-full lg:w-auto md:w-auto inline-block cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border border-gray-600 hover:border-white text-lg lg:text-xl font-medium rounded-full bg-white/[0.06] backdrop-blur-md py-3 lg:px-8 px-6 text-center shadow-md"
-                >
+                <Link href={`/work/${project.slug}`} className="btn-case-cta">
                   See case
                 </Link>
               </div>
