@@ -99,7 +99,7 @@ export default function AboutPage() {
               >
                 <div>
                   <span className="text-blue-500 font-mono text-sm block mb-6">
-                    0{idx + 1} //
+                    0{idx + 1} {'//'}
                   </span>
                   <h3 className="text-2xl lg:text-3xl font-bold mb-4 text-white">
                     {pillar.title}
