@@ -588,6 +588,63 @@
   .btn-blog-cta {
     @apply w-full md:w-auto shrink-0 cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border border-gray-600 hover:border-white text-lg font-medium rounded-full bg-white/[0.08] backdrop-blur-md py-3.5 px-8 text-center shadow-md;
   }
+
+  /* --- CONTACT PAGE UTILITIES --- */
+  .contact-page-section {
+    @apply bg-[#09090B] text-white min-h-screen pb-32;
+  }
+
+  .contact-main-container {
+    @apply flex flex-col px-6 md:px-12 lg:px-32 xl:px-60 max-w-[1440px] mx-auto gap-16;
+  }
+
+  .contact-intro-lead {
+    @apply text-2xl leading-9 md:text-3xl md:leading-10 max-w-3xl font-medium text-gray-200;
+  }
+
+  .contact-links-row {
+    @apply flex flex-col gap-8 lg:flex-row lg:justify-between border-b border-gray-800 pb-12;
+  }
+
+  .contact-label-text {
+    @apply text-[#6366f1] text-xl mb-1.5 font-medium;
+  }
+
+  .contact-direct-link {
+    @apply text-xl lg:text-xl hover:text-[#4f46e5] transition-colors duration-300 ease-in-out font-semibold;
+  }
+
+  .contact-form-card {
+    @apply bg-[#18181B] p-6 sm:p-8 lg:p-12 w-full max-w-[840px] border-2 border-[#27272A] rounded-3xl flex flex-col gap-6 shadow-2xl;
+  }
+
+  .contact-form-heading {
+    @apply text-2xl lg:text-3xl font-semibold mb-2;
+  }
+
+  .contact-input-label {
+    @apply text-[#71717a] text-base font-medium;
+  }
+
+  .contact-input-field {
+    @apply w-full p-4 bg-[#27272A] text-white rounded-2xl selection:bg-transparent focus:bg-[#09090B] focus:outline-[#4f46e5] focus:outline-1 focus:border-transparent transition-all;
+  }
+
+  .contact-textarea-field {
+    @apply w-full p-4 bg-[#27272A] text-white rounded-2xl selection:bg-transparent focus:bg-[#09090B] focus:outline-[#4f46e5] focus:outline-1 focus:border-transparent transition-all resize-none;
+  }
+
+  .btn-contact-submit {
+    @apply text-white w-full cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border border-gray-600 text-lg leading-8 font-inter rounded-full bg-white/[0.08] backdrop-blur-md py-3.5 px-8 font-medium shadow-lg mt-2;
+  }
+
+  .contact-success-box {
+    @apply bg-green-500/10 border border-green-500/30 text-green-400 p-6 rounded-2xl text-center flex flex-col gap-2;
+  }
+
+  .contact-error-box {
+    @apply bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-2xl text-sm;
+  }
 }
 
 /* Custom Infinite Marquee Animations */
