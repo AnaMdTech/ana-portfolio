@@ -116,26 +116,23 @@ export default async function BlogDetailPage({
   }
 
   return (
-    <article className="bg-[#09090B] text-white min-h-screen pb-32">
-      {/* 1. Dramatic Full-Width Hero Header - INCREASED HEIGHT & TOP PADDING */}
-      <div className="relative w-full min-h-[55vh] md:min-h-[65vh] flex items-end justify-start overflow-hidden pt-36 md:pt-44 pb-12 md:pb-16">
+    <article className="blog-detail-article">
+      {/* 1. Dramatic Full-Width Hero Header */}
+      <div className="blog-hero-container">
         <Image
           src={post.heroImage || "/assets/images/hero.jpg"}
           alt={post.title}
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center brightness-75"
+          className="blog-hero-img"
         />
-        <div className="absolute inset-0 bg-black/50 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/60 to-transparent z-[2]" />
+        <div className="blog-hero-overlay-dark" />
+        <div className="blog-hero-overlay-gradient" />
 
         {/* Title Overlay */}
-        <div className="relative z-[5] w-full max-w-[960px] mx-auto px-6">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm md:text-base text-gray-400 hover:text-white transition-colors mb-6 group"
-          >
+        <div className="blog-hero-content">
+          <Link href="/blog" className="blog-back-link group">
             <span className="transform transition-transform group-hover:-translate-x-1">
               ←
             </span>
@@ -143,32 +140,24 @@ export default async function BlogDetailPage({
           </Link>
 
           <div className="flex items-center gap-4 mb-4">
-            <span className="bg-white/[0.08] border border-white/15 px-4 py-1 rounded-full text-blue-400 font-mono text-xs md:text-sm">
-              {post.category}
-            </span>
+            <span className="blog-badge">{post.category}</span>
             <span className="text-gray-400 text-sm md:text-base font-inter">
               {post.readTime}
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-            {post.title}
-          </h1>
-          <p className="text-gray-400 text-sm md:text-base mt-3 font-inter">
-            Published on {post.date} · By Ana Md
-          </p>
+          <h1 className="blog-hero-title">{post.title}</h1>
+          <p className="blog-hero-date">Published on {post.date} · By Ana Md</p>
         </div>
       </div>
 
       {/* 2. Editorial Article Content Area */}
-      <div className="max-w-[840px] mx-auto px-6 pt-12">
+      <div className="blog-body-container">
         {/* Styled Lead Introductory Paragraph */}
-        <p className="text-xl md:text-2xl lg:text-[26px] leading-relaxed text-gray-100 font-medium border-l-4 border-blue-500 pl-6 my-6">
-          {post.leadParagraph}
-        </p>
+        <p className="blog-lead-text">{post.leadParagraph}</p>
 
         {/* Narrative Body Paragraphs */}
-        <div className="flex flex-col gap-8 text-lg md:text-xl leading-relaxed text-gray-300 font-inter mt-10">
+        <div className="blog-narrative-wrapper">
           {post.content.map((paragraph, index) => (
             <p key={index} className="text-gray-300">
               {paragraph}
@@ -177,17 +166,13 @@ export default async function BlogDetailPage({
         </div>
 
         {/* Editorial Takeaway Breakout Card */}
-        <div className="my-14 p-8 md:p-10 bg-gradient-to-br from-[#131315] to-[#1c1c1f] border border-blue-500/30 rounded-3xl shadow-xl">
-          <span className="text-blue-400 font-mono text-sm uppercase tracking-widest block mb-3">
-            {"//"} Key Takeaway
-          </span>
-          <p className="text-xl md:text-2xl font-bold text-white leading-snug">
-            &ldquo;{post.takeaway}&rdquo;
-          </p>
+        <div className="blog-takeaway-card">
+          <span className="blog-takeaway-label">{"//"} Key Takeaway</span>
+          <p className="blog-takeaway-quote">&ldquo;{post.takeaway}&rdquo;</p>
         </div>
 
         {/* 3. Bottom Engagement Call-to-Action */}
-        <div className="border-t border-gray-800 pt-14 mt-16 flex flex-col md:flex-row items-center justify-between gap-8 bg-[#131315] p-8 lg:p-10 rounded-3xl border border-gray-800/80">
+        <div className="blog-bottom-cta-box">
           <div>
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
               Want to build something together?
@@ -197,10 +182,7 @@ export default async function BlogDetailPage({
               mobile project.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="w-full md:w-auto shrink-0 cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border border-gray-600 hover:border-white text-lg font-medium rounded-full bg-white/[0.08] backdrop-blur-md py-3.5 px-8 text-center shadow-md"
-          >
+          <Link href="/contact" className="btn-blog-cta">
             Start a conversation →
           </Link>
         </div>

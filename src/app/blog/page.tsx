@@ -21,7 +21,6 @@ export interface BlogPost {
   imageUrl: string;
 }
 
-// Initial sample articles reflecting your actual stack and founder background
 const INITIAL_POSTS: BlogPost[] = [
   {
     id: "1",
@@ -74,62 +73,50 @@ const INITIAL_POSTS: BlogPost[] = [
 
 export default function BlogPage() {
   return (
-    <section className="bg-[#09090B] text-white min-h-screen pb-32">
+    <section className="blog-page-section">
       {/* Massive Page Header */}
       <PageHeader accent="Latest" title="updates" />
 
       {/* Editorial Blog Grid */}
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 xl:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+      <div className="blog-grid-container">
+        <div className="blog-grid">
           {INITIAL_POSTS.map((post) => (
-            <article
-              key={post.id}
-              className="bg-[#131315] border border-gray-800/80 rounded-3xl p-8 lg:p-10 flex flex-col justify-between hover:border-gray-600 transition-all duration-300 shadow-lg group"
-            >
+            <article key={post.id} className="blog-card group">
               <div className="flex flex-col gap-5">
                 {/* Image Thumbnail Placeholder */}
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="relative w-full h-[220px] md:h-[260px] bg-gradient-to-b from-[#1c1c1f] to-[#131315] rounded-2xl overflow-hidden mb-2 block border border-gray-800/60"
-                >
+                <Link href={`/blog/${post.slug}`} className="blog-card-img-box">
                   <Image
                     src={post.imageUrl}
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="blog-card-img"
                   />
                 </Link>
 
                 {/* Category Badge & Reading Time */}
-                <div className="flex items-center justify-between text-sm font-mono text-gray-400">
-                  <span className="bg-white/[0.07] border border-white/10 px-3.5 py-1 rounded-full text-blue-400 font-medium">
-                    {post.category}
-                  </span>
+                <div className="blog-card-meta-row">
+                  <span className="blog-badge">{post.category}</span>
                   <span>{post.readTime}</span>
                 </div>
 
                 {/* Article Title */}
                 <Link href={`/blog/${post.slug}`}>
-                  <h2 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-blue-400 transition-colors duration-200 leading-snug">
-                    {post.title}
-                  </h2>
+                  <h2 className="blog-card-title">{post.title}</h2>
                 </Link>
 
                 {/* Excerpt */}
-                <p className="text-gray-400 text-lg leading-relaxed font-inter">
-                  {post.excerpt}
-                </p>
+                <p className="blog-card-excerpt">{post.excerpt}</p>
               </div>
 
               {/* Publication Date & Read More Link */}
-              <div className="flex items-center justify-between border-t border-gray-800/80 pt-6 mt-8">
+              <div className="blog-card-footer">
                 <span className="text-sm text-gray-500 font-inter">
                   {post.date}
                 </span>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-base font-semibold text-white group-hover:text-blue-400 transition-colors"
+                  className="blog-card-read-link"
                 >
                   Read article
                   <span className="transform transition-transform group-hover:translate-x-1">
