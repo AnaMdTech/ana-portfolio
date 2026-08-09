@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import CTASection from "@/components/shared/CTASection";
 
 export interface BlogDetail {
   title: string;
@@ -172,20 +173,11 @@ export default async function BlogDetailPage({
         </div>
 
         {/* 3. Bottom Engagement Call-to-Action */}
-        <div className="blog-bottom-cta-box">
-          <div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-              Want to build something together?
-            </h3>
-            <p className="text-gray-400 text-base md:text-lg">
-              Let&apos;s talk about your Next.js web app or cross-platform
-              mobile project.
-            </p>
-          </div>
-          <Link href="/contact" className="btn-blog-cta">
-            Start a conversation →
-          </Link>
-        </div>
+        <CTASection
+          title="Want to build something together?"
+          description="Let's talk about your Next.js web app or cross-platform mobile project."
+          buttonText="Start a conversation →"
+        />
       </div>
     </article>
   );

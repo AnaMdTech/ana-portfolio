@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import CTASection from "@/components/shared/CTASection";
 
 export const metadata: Metadata = {
   title: "About Ana Md | Full-Stack Developer & Founder",
@@ -97,20 +98,7 @@ export default function AboutPage() {
       </div>
 
       {/* 4. Bottom Call-to-Action Bar */}
-      <div className="cta-section-wrapper">
-        <div className="cta-card-box">
-          <h3 className="cta-card-title">
-            Have a web or mobile project in mind?
-          </h3>
-          <p className="cta-card-desc">
-            Whether you need an interactive Next.js web application or a
-            cross-platform mobile app, let’s build it right from day one.
-          </p>
-          <Link href="/contact" className="btn-cta-contact">
-            Get in touch with Ana
-          </Link>
-        </div>
-      </div>
+      <CTASection />
     </section>
   );
 }

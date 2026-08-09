@@ -581,14 +581,6 @@
     @apply text-xl md:text-2xl font-bold text-white leading-snug;
   }
 
-  .blog-bottom-cta-box {
-    @apply border-t border-gray-800 pt-14 mt-16 flex flex-col md:flex-row items-center justify-between gap-8 bg-[#131315] p-8 lg:p-10 rounded-3xl border border-gray-800/80;
-  }
-
-  .btn-blog-cta {
-    @apply w-full md:w-auto shrink-0 cursor-pointer hover:bg-white hover:text-black transition-all duration-300 border border-gray-600 hover:border-white text-lg font-medium rounded-full bg-white/[0.08] backdrop-blur-md py-3.5 px-8 text-center shadow-md;
-  }
-
   /* --- CONTACT PAGE UTILITIES --- */
   .contact-page-section {
     @apply bg-[#09090B] text-white min-h-screen pb-32;
