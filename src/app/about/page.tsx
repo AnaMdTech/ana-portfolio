@@ -3,30 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import CTASection from "@/components/shared/CTASection";
+import { ABOUT_PILLARS } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Ana Md | Full-Stack Developer & Founder",
   description:
     "Learn about Ana Md, a full-stack software developer, digital creator, and tech entrepreneur from Addis Ababa, Ethiopia.",
 };
-
-const PILLARS = [
-  {
-    title: "Full-Stack & Mobile Mastery",
-    description:
-      "From responsive Next.js web applications to cross-platform iOS and Android apps using Expo and React Native, I build scalable systems across every screen.",
-  },
-  {
-    title: "Product-Minded Execution",
-    description:
-      "As the founder of ANAMDTECH Solutions, I don’t just write code—I design with business metrics, user retention, and long-term product scalability in mind.",
-  },
-  {
-    title: "Disciplined Engineering",
-    description:
-      "I prioritize clean architecture, accessible UI/UX design systems, and rock-solid performance optimization so your users get a flawless experience.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -82,7 +65,7 @@ export default function AboutPage() {
           <h2 className="about-pillars-title">What I bring to your product</h2>
 
           <div className="about-pillars-grid">
-            {PILLARS.map((pillar, idx) => (
+            {ABOUT_PILLARS.map((pillar, idx) => (
               <div key={idx} className="about-pillar-card">
                 <div>
                   <span className="about-pillar-num">

@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/data"; 
 
 export default function Footer() {
   return (
@@ -21,58 +21,34 @@ export default function Footer() {
 
         {/* Links & Socials Grid */}
         <div className="footer-links-grid">
-          {/* Pages Column */}
+          {/* Pages Column (Mapped) */}
           <div className="footer-link-col">
             <p className="footer-col-title">Pages</p>
-            <Link href="/work" className="footer-link-item">
-              Work
-            </Link>
-            <Link href="/about" className="footer-link-item">
-              About
-            </Link>
-            <Link href="/blog" className="footer-link-item">
-              Blog
-            </Link>
-            <Link href="/contact" className="footer-link-item">
-              Contact
-            </Link>
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="footer-link-item"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Socials Column */}
+          {/* Socials Column (Mapped) */}
           <div className="footer-link-col">
             <p className="footer-col-title">Socials</p>
-            <a
-              href="https://www.instagram.com/anamdtech/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link-item"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ana-mohammed-78443a286/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link-item"
-            >
-              Linkedin
-            </a>
-            <a
-              href="https://github.com/AnaMdTech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link-item"
-            >
-              Github
-            </a>
-            <a
-              href="https://web.facebook.com/anamdtech/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link-item"
-            >
-              Facebook
-            </a>
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-item"
+              >
+                {social.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -80,7 +56,8 @@ export default function Footer() {
       {/* Bottom Legal / Author Bar */}
       <div className="footer-bottom-bar">
         <p className="footer-legal-text">
-          Built in <span className="text-white font-bold">React</span> · Made by{" "}
+          Built in <span className="text-white font-bold">NextJs</span> · Made
+          by{" "}
           <a
             href="https://github.com/AnaMdTech"
             target="_blank"

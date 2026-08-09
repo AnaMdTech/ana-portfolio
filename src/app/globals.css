@@ -38,6 +38,10 @@
     @apply md:hidden text-white p-2 focus:outline-none rounded-full hover:bg-white/10 transition;
   }
 
+  .nav-humburger-icon {
+    @apply object-contain invert opacity-80 hover:opacity-100 transition-opacity duration-200;
+  }
+
   /* --- MOBILE DRAWER UTILITIES --- */
   .mobile-drawer-overlay {
     @apply fixed inset-0 z-[9990] bg-black/90 backdrop-blur-2xl flex flex-col items-center justify-center md:hidden transition-[clip-path,opacity] duration-700 ease-[cubic-bezier(0.77,0,0.175,1)];

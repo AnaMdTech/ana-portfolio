@@ -1,24 +1,5 @@
-import React from "react";
 import Image from "next/image";
-
-const SERVICES = [
-  {
-    title: "Websites",
-    description: "Responsive websites and dashboards for your business.",
-    image: "/assets/images/website-card.jpg",
-  },
-  {
-    title: "Apps",
-    description: "Designing mobile apps for iOS and Android users.",
-    image: "/assets/images/apps-card.jpg",
-  },
-  {
-    title: "Design systems",
-    description:
-      "Building robust and flexible design systems for easy scalability.",
-    image: "/assets/images/design-card.jpg",
-  },
-];
+import { SERVICES } from "@/lib/data";
 
 export default function ServicesGrid() {
   return (
