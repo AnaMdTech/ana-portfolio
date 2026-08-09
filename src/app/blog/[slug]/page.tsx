@@ -12,7 +12,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((P) => P.slug === slug);
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) {
     return { title: "Article Not Found | AnaMd" };

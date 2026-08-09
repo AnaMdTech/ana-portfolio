@@ -1,30 +1,35 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-export interface ProjectData {
-  id: string;
-  title: string;
-  role: string;
-  year: string;
-  imageUrl: string;
-  slug: string;
-}
+import { motion } from "framer-motion";
+import { ProjectData } from "@/types";
 
 export interface ProjectCardProps {
   project: ProjectData;
   variant?: "homepage" | "grid";
   className?: string;
+  slideDirection?: "left" | "right";
 }
 
 export default function ProjectCard({
   project,
   variant = "grid",
   className = "",
+  slideDirection = "left",
 }: ProjectCardProps) {
   const isHome = variant === "homepage";
 
+  // Negative offset for left slide, positive offset for right slide
+  const initialX = slideDirection === "left" ? -60 : 60;
+
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, x: initialX, y: 30 }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`group ${
         isHome ? "work-item-wrapper" : "work-card-wrapper"
       } ${className}`}
@@ -58,6 +63,6 @@ export default function ProjectCard({
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -16,10 +16,15 @@ export default function WorkPage() {
       {/* Massive Page Heading */}
       <PageHeader accent="Selected" title="work" />
 
-      {/* Responsive 2-Column Grid using Shared Components */}
+      {/* Responsive 2-Column Grid */}
       <div className="work-grid-container">
-        {PROJECTS.map((project) => (
-          <ProjectCard key={project.id} project={project} variant="grid" />
+        {PROJECTS.map((project, idx) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            variant="grid"
+            slideDirection={idx % 2 === 0 ? "left" : "right"}
+          />
         ))}
       </div>
     </section>
