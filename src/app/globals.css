@@ -637,6 +637,55 @@
   .contact-error-box {
     @apply bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-2xl text-sm;
   }
+
+  /* --- FOOTER UTILITIES --- */
+  .footer-wrapper {
+    @apply bg-[#09090B] text-white py-12 lg:py-32 flex flex-col gap-12 xl:gap-50 overflow-hidden;
+  }
+
+  .footer-giant-text {
+    @apply px-8 text-7xl lg:text-[180px] xl:text-[250px] lg:px-2 font-medium tracking-tight;
+  }
+
+  .footer-content-container {
+    @apply px-8 xl:px-14 lg:px-[24px] xl:max-w-[1280px] mx-auto flex flex-col xl:flex-row w-full xl:justify-around gap-12;
+  }
+
+  .footer-cta-col {
+    @apply flex flex-col gap-6 xl:gap-10 xl:w-1/2;
+  }
+
+  .footer-cta-heading {
+    @apply text-3xl xl:text-4xl text-[#545456];
+  }
+
+  .btn-footer-cta {
+    @apply w-full text-center xl:w-1/3 lg:w-1/5 md:w-1/4 cursor-pointer hover:bg-transparent transition-all duration-300 border-2 border-gray-500 text-xl rounded-full bg-[rgba(255,255,255,0.1)] backdrop-blur py-3 px-6;
+  }
+
+  .footer-links-grid {
+    @apply flex justify-between gap-8 xl:gap-80;
+  }
+
+  .footer-link-col {
+    @apply flex flex-col gap-4 w-1/2;
+  }
+
+  .footer-col-title {
+    @apply text-blue-600 text-xl font-medium mb-1.5;
+  }
+
+  .footer-link-item {
+    @apply text-xl xl:text-2xl font-medium hover:rotate-3 transition-all duration-300 ease-in-out hover:scale-110 inline-block w-max;
+  }
+
+  .footer-bottom-bar {
+    @apply flex flex-col justify-between px-8 xl:px-24 xl:text-xl md:text-left md:px-6 leading-relaxed xl:flex-row gap-4 xl:gap-0;
+  }
+
+  .footer-legal-text {
+    @apply text-[#626263] opacity-90 leading-6;
+  }
 }
 
 /* Custom Infinite Marquee Animations */
