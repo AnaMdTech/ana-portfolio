@@ -1,15 +1,10 @@
 import React from "react";
 
 export interface PageHeaderProps {
-  /** The main title text (e.g., "work", "updates", "About", "Contact") */
   title: string;
-  /** Optional muted gray prefix word stacked above the title (e.g., "Selected", "Latest") */
   accent?: string;
-  /** Layout mode: "stacked" centers vertically; "split" puts title on left & children on right */
   layout?: "stacked" | "split";
-  /** Additional custom spacing or container classes */
   className?: string;
-  /** Optional bio, subtitle, or side-note elements */
   children?: React.ReactNode;
 }
 

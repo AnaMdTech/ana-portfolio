@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "AnaMdTech - Software Developer & Tech Founder",
+  title: "AnaMd - Software Developer & Tech Founder",
   description:
     "Creating online & offline experiences. A creative human from Ethiopia.",
 };

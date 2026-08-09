@@ -32,12 +32,10 @@ export default function Navbar() {
       <header
         className={`navbar-base ${isScrolled ? "navbar-pill" : "navbar-full"}`}
       >
-        {/* 1. Brand Logo */}
         <Link href="/" onClick={closeMenu} className="nav-logo">
           <Logo />
         </Link>
 
-        {/* 2. Desktop Navigation Links */}
         <nav className="nav-desktop-menu">
           {NAV_LINKS.map((link) => (
             <Link
@@ -52,7 +50,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* 3. Actions: Download CV + Hamburger Icon */}
         <div className="nav-actions">
           <a
             href="/ana-mohammed-Resume.pdf"
@@ -85,7 +82,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* 4. Mobile Navigation Drawer */}
       <div
         className="mobile-drawer-overlay"
         style={{

@@ -1,13 +1,13 @@
 import React from "react";
 import type { Metadata } from "next";
 import PageHeader from "@/components/shared/PageHeader";
-import ProjectCard, { ProjectData } from "@/components/shared/ProjectCard";
+import ProjectCard from "@/components/shared/ProjectCard";
 import { PROJECTS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Selected Work | AnaMdTech",
+  title: "Selected Work | AnaMd",
   description:
-    "Explore responsive websites, mobile apps, and UI/UX design systems created by AnaMdTech.",
+    "Explore responsive websites, mobile apps, and UI/UX design systems created by AnaMd.",
 };
 
 export default function WorkPage() {

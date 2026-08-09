@@ -6,17 +6,6 @@ import type { Metadata } from "next";
 import CTASection from "@/components/shared/CTASection";
 import { BLOG_POSTS } from "@/lib/data";
 
-export interface BlogDetail {
-  title: string;
-  date: string;
-  readTime: string;
-  category: string;
-  heroImage: string;
-  leadParagraph: string;
-  content: string[];
-  takeaway: string;
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -26,11 +15,11 @@ export async function generateMetadata({
   const post = BLOG_POSTS.find((P) => P.slug === slug);
 
   if (!post) {
-    return { title: "Article Not Found | AnaMdTech" };
+    return { title: "Article Not Found | AnaMd" };
   }
 
   return {
-    title: `${post.title} | AnaMdTech Blog`,
+    title: `${post.title} | AnaMd Blog`,
     description: post.leadParagraph.slice(0, 160),
   };
 }

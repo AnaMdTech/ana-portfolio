@@ -6,21 +6,10 @@ import PageHeader from "@/components/shared/PageHeader";
 import { BLOG_POSTS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Engineering & Founder Blog | AnaMdTech",
+  title: "Engineering & Founder Blog | AnaMdTech Solutions",
   description:
     "Insights on full-stack software architecture, mobile app development with Expo & React Native, and disciplined product building.",
 };
-
-export interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-  imageUrl: string;
-}
 
 export default function BlogPage() {
   return (

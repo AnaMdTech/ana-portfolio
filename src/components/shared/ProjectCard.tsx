@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,9 +12,7 @@ export interface ProjectData {
 
 export interface ProjectCardProps {
   project: ProjectData;
-  /** "homepage" uses edge-hugging widths; "grid" uses responsive fluid widths */
   variant?: "homepage" | "grid";
-  /** Pass extra layout classes (like lg:items-start for staggering) */
   className?: string;
 }
 

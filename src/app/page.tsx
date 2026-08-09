@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import TechStackMarquee from "@/components/home/TechStackMarquee";

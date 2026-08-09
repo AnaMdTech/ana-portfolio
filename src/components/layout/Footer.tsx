@@ -4,11 +4,9 @@ import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/data";
 export default function Footer() {
   return (
     <footer className="footer-wrapper">
-      {/* Massive Signature Heading */}
       <h1 className="footer-giant-text">let&apos;s connect</h1>
 
       <div className="footer-content-container">
-        {/* CTA Column */}
         <div className="footer-cta-col">
           <h2 className="footer-cta-heading">
             Ready to create something{" "}
@@ -19,9 +17,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* Links & Socials Grid */}
         <div className="footer-links-grid">
-          {/* Pages Column (Mapped) */}
           <div className="footer-link-col">
             <p className="footer-col-title">Pages</p>
             {NAV_LINKS.map((link) => (
@@ -35,7 +31,6 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Socials Column (Mapped) */}
           <div className="footer-link-col">
             <p className="footer-col-title">Socials</p>
             {SOCIAL_LINKS.map((social) => (
@@ -53,7 +48,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Legal / Author Bar */}
       <div className="footer-bottom-bar">
         <p className="footer-legal-text">
           Built in <span className="text-white font-bold">NextJs</span> · Made

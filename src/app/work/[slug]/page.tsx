@@ -5,21 +5,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PROJECTS } from "@/lib/data";
 
-export interface ProjectDetail {
-  title: string;
-  client: string;
-  role: string;
-  year: string;
-  liveUrl?: string;
-  imageUrl: string;
-  overview: string;
-  challenges: string;
-  solution: string;
-  results: string;
-  conclusion: string;
-  galleryImages: string[];
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -29,11 +14,11 @@ export async function generateMetadata({
   const project = PROJECTS.find((p) => p.slug === slug);
 
   if (!project) {
-    return { title: "Project Not Found | AnaMdTech" };
+    return { title: "Project Not Found | AnaMd" };
   }
 
   return {
-    title: `${project.title} — Case Study | AnaMdTech`,
+    title: `${project.title} — Case Study | AnaMd`,
     description: project.overview.slice(0, 160),
   };
 }

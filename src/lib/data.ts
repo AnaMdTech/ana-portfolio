@@ -1,3 +1,4 @@
+import { ProjectData, BlogPost, NavLink } from "@/types";
 // ==========================================
 // 1. SERVICES DATA (Homepage)
 // ==========================================
@@ -129,7 +130,7 @@ export const ABOUT_PILLARS = [
 // ==========================================
 // 5. PROJECTS DATA (Work Hub & Case Studies)
 // ==========================================
-export const PROJECTS = [
+export const PROJECTS: ProjectData[] = [
   {
     id: "1",
     slug: "burger-bite",
@@ -219,7 +220,7 @@ export const PROJECTS = [
 // ==========================================
 // 6. SELECTED PROJECTS DATA (Homepage)
 // ==========================================
-export const SELECTED_PROJECTS = [
+export const SELECTED_PROJECTS: ProjectData[] = [
   {
     id: "1",
     slug: "burger-bite",
@@ -267,7 +268,7 @@ export const SELECTED_PROJECTS = [
 // ==========================================
 // 7. BLOG POSTS DATA (Blog Hub & Articles)
 // ==========================================
-export const BLOG_POSTS = [
+export const BLOG_POSTS: BlogPost[] = [
   {
     id: "1",
     slug: "why-expo-react-native-for-mobile",
@@ -356,16 +357,19 @@ export const BLOG_POSTS = [
 // ==========================================
 // 7. NAVIGATION & SOCIAL LINKS
 // ==========================================
-export const NAV_LINKS = [
+export const NAV_LINKS: NavLink[] = [
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
-export const SOCIAL_LINKS = [
+export const SOCIAL_LINKS: NavLink[] = [
   { label: "Instagram", href: "https://www.instagram.com/anamdtech/" },
-  { label: "Linkedin", href: "https://www.linkedin.com/in/ana-mohammed-78443a286/" },
+  {
+    label: "Linkedin",
+    href: "https://www.linkedin.com/in/ana-mohammed-78443a286/",
+  },
   { label: "Github", href: "https://github.com/AnaMdTech" },
   { label: "Facebook", href: "https://web.facebook.com/anamdtech/" },
 ];

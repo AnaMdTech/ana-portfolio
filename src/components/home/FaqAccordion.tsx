@@ -13,13 +13,11 @@ export default function FaqAccordion() {
   return (
     <section className="faq-section">
       <div className="flex flex-col gap-10">
-        {/* Section Header */}
         <div>
           <p className="faq-subtitle">FAQ</p>
           <h2 className="faq-title">Most asked questions</h2>
         </div>
 
-        {/* Accordion Items */}
         <div>
           {FAQS.map((item, idx) => {
             const isOpen = openIndex === idx;

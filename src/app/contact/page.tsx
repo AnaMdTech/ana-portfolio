@@ -39,7 +39,7 @@ export default function ContactPage() {
           email: formData.email,
           message: formData.question,
           subject: `New Portfolio Message from ${formData.name}`,
-          from_name: "AnaMdTech Portfolio",
+          from_name: "AnaMd Portfolio",
         }),
       });
 
