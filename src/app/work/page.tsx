@@ -1,8 +1,7 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import PageHeader from "@/components/shared/PageHeader";
+import ProjectCard, { ProjectData } from "@/components/shared/ProjectCard";
 
 export const metadata: Metadata = {
   title: "Selected Work | AnaMdTech",
@@ -10,16 +9,7 @@ export const metadata: Metadata = {
     "Explore responsive websites, mobile apps, and UI/UX design systems created by AnaMdTech.",
 };
 
-export interface WorkProject {
-  id: string;
-  title: string;
-  role: string;
-  year: string;
-  imageUrl: string;
-  slug: string;
-}
-
-const WORK_PROJECTS: WorkProject[] = [
+const WORK_PROJECTS: ProjectData[] = [
   {
     id: "1",
     title: "Burger Bite",
@@ -60,37 +50,10 @@ export default function WorkPage() {
       {/* Massive Page Heading */}
       <PageHeader accent="Selected" title="work" />
 
-      {/* Responsive 2-Column Grid */}
+      {/* Responsive 2-Column Grid using Shared Components */}
       <div className="work-grid-container">
         {WORK_PROJECTS.map((project) => (
-          <div key={project.id} className="work-card-wrapper group">
-            {/* Project Image Box */}
-            <Link href={`/work/${project.slug}`} className="work-card-img-box">
-              <Image
-                src={project.imageUrl}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="work-card-img"
-              />
-            </Link>
-
-            {/* Title, Role, Year & Case Study CTA Button */}
-            <div className="work-card-footer">
-              <div>
-                <h3 className="work-title">{project.title}</h3>
-                <p className="work-meta">
-                  {project.role} · {project.year}
-                </p>
-              </div>
-
-              <div>
-                <Link href={`/work/${project.slug}`} className="btn-case-cta">
-                  See case
-                </Link>
-              </div>
-            </div>
-          </div>
+          <ProjectCard key={project.id} project={project} variant="grid" />
         ))}
       </div>
     </section>

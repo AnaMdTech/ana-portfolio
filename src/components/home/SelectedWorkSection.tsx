@@ -1,17 +1,7 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import ProjectCard, { ProjectData } from "@/components/shared/ProjectCard";
 
-export interface ProjectItem {
-  id: string;
-  title: string;
-  role: string;
-  year: string;
-  imageUrl: string;
-  slug: string;
-}
-
-const INITIAL_PROJECTS: ProjectItem[] = [
+const INITIAL_PROJECTS: ProjectData[] = [
   {
     id: "1",
     title: "Burger Bite",
@@ -33,7 +23,7 @@ const INITIAL_PROJECTS: ProjectItem[] = [
 export default function SelectedWorkSection({
   projects = INITIAL_PROJECTS,
 }: {
-  projects?: ProjectItem[];
+  projects?: ProjectData[];
 }) {
   return (
     <section className="work-section">
@@ -46,50 +36,15 @@ export default function SelectedWorkSection({
 
         {/* Project List */}
         <div className="work-list-wrapper w-full">
-          {projects.map((project, idx) => {
-            const isEven = idx % 2 !== 0;
-            return (
-              <div
-                key={project.id}
-                className={`work-item-wrapper group ${
-                  isEven ? "lg:items-end" : ""
-                }`}
-              >
-                {/* Image Container with Full Visibility & Hover Zoom */}
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="work-img-container"
-                >
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
-                    className="work-img"
-                  />
-                </Link>
-
-                {/* Project Details & CTA Bar */}
-                <div className="work-info-bar">
-                  <div>
-                    <h3 className="work-title">{project.title}</h3>
-                    <p className="work-meta">
-                      {project.role} · {project.year}
-                    </p>
-                  </div>
-
-                  <div>
-                    <Link
-                      href={`/work/${project.slug}`}
-                      className="btn-case-cta"
-                    >
-                      See case
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {projects.map((project, idx) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              variant="homepage"
+              // Keep the alternating left/right alignment
+              className={idx % 2 !== 0 ? "lg:items-end" : "lg:items-start"}
+            />
+          ))}
         </div>
       </div>
     </section>
