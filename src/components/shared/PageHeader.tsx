@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
 export interface PageHeaderProps {
   title: string;
@@ -23,25 +26,29 @@ export default function PageHeader({
         isSplit ? "page-header-split" : "text-center"
       } ${className}`}
     >
-      {/* Title Column — Slides in from Left */}
-      <h1
-        className={`page-header-title animate-fade-in-up ${
-          isSplit ? "md:w-1/2" : "w-full"
-        }`}
+      {/* Title Column — Slides up and fades in */}
+      <motion.h1
+        className={`page-header-title ${isSplit ? "md:w-1/2" : "w-full"}`}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         {accent && <span className="page-header-accent">{accent}</span>}
         <span className="block">{title}</span>
-      </h1>
+      </motion.h1>
 
-      {/* Children / Right-Side Bio Note — Slides in from Right */}
+      {/* Children / Right-Side Bio Note — Slides in from right */}
       {children && (
-        <div
-          className={`page-header-note animate-fade-in-right ${
+        <motion.div
+          className={`page-header-note ${
             isSplit ? "md:w-1/2 pt-2 md:pt-6" : "mt-8 max-w-3xl mx-auto"
           }`}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           {children}
-        </div>
+        </motion.div>
       )}
     </div>
   );
