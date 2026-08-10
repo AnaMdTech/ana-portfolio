@@ -45,8 +45,8 @@ export default function BlogForm({
     // Convert string of paragraphs back into an array for Supabase
     const contentArray = formData.content
       .split("\n\n")
-      .map((p) => p.trim())
-      .filter((p) => p.length > 0);
+      .map((p:string ) => p.trim())
+      .filter((p:string ) => p.length > 0);
 
     const submissionData = {
       ...formData,
