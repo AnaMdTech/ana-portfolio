@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createBlog, updateBlog } from "@/actions/blog-actions";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 export default function BlogForm({
   initialData = null,
@@ -130,14 +131,12 @@ export default function BlogForm({
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-sm text-gray-400 font-medium">Image URL</label>
-          <input
-            required
-            name="imageUrl"
+          <label className="text-sm text-gray-400 font-medium">
+            Hero Image
+          </label>
+          <ImageUpload
             value={formData.imageUrl}
-            onChange={handleChange}
-            placeholder="/assets/images/work-1.png"
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            onChange={(url) => setFormData({ ...formData, imageUrl: url })}
           />
         </div>
       </div>

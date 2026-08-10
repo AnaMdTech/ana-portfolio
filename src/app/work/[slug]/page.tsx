@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getProjectBySlug } from "@/actions/project-actions";
 
-// Dynamic metadata generated from the database
 export async function generateMetadata({
   params,
 }: {
@@ -30,13 +29,17 @@ export default async function WorkDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  // Fetch from Supabase instead of lib/data.ts
   const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
   }
+
+  // Split the overview string into an array of paragraphs wherever you pressed Enter twice
+  const overviewParagraphs = project.overview
+    .split("\n\n")
+    .map((p: string) => p.trim())
+    .filter((p: string) => p.length > 0);
 
   return (
     <article className="case-article">
@@ -50,7 +53,6 @@ export default async function WorkDetailPage({
           sizes="100vw"
           className="object-cover object-center"
         />
-
         <div className="case-hero-overlay-dark" />
         <div className="case-hero-overlay-gradient" />
 
@@ -67,23 +69,20 @@ export default async function WorkDetailPage({
 
       {/* 2. Responsive 2-Column Case Study Content */}
       <div className="case-body-container">
-        {/* Left Sidebar: Client / Role / Year / CTA Button */}
+        {/* Left Sidebar */}
         <aside className="case-sidebar">
           <div>
             <p className="case-sidebar-label">Client</p>
             <p className="case-sidebar-value">{project.client}</p>
           </div>
-
           <div>
             <p className="case-sidebar-label">Role</p>
             <p className="case-sidebar-value">{project.role}</p>
           </div>
-
           <div>
             <p className="case-sidebar-label">Year</p>
             <p className="case-sidebar-value">{project.year}</p>
           </div>
-
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -96,13 +95,20 @@ export default async function WorkDetailPage({
           )}
         </aside>
 
-        {/* Right Main Column: Narrative, Breakdown & Screenshots */}
+        {/* Right Main Column */}
         <div className="case-main-content">
-          <p className="case-overview-text">{project.overview}</p>
+          {/* MAPPED OVERVIEW PARAGRAPHS */}
+          {overviewParagraphs.map((paragraph: string, index: number) => (
+            <p
+              key={index}
+              className={`case-overview-text ${index === 0 ? "text-white" : "text-gray-400"}`}
+            >
+              {paragraph}
+            </p>
+          ))}
 
           <div className="case-narrative-wrapper">
-
-            <h3 className="case-section-heading">Challenges</h3>
+            <h3 className="case-section-heading mt-8">Challenges</h3>
             <p>{project.challenges}</p>
 
             {project.galleryImages && project.galleryImages[0] && (

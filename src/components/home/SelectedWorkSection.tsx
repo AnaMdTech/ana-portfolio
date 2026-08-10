@@ -2,13 +2,12 @@
 
 import { motion } from "framer-motion";
 import ProjectCard from "@/components/shared/ProjectCard";
-import { SELECTED_PROJECTS } from "@/lib/data";
 import { ProjectData } from "@/types";
 
 export default function SelectedWorkSection({
-  projects = SELECTED_PROJECTS,
+  projects,
 }: {
-  projects?: ProjectData[];
+  projects: ProjectData[]; // Removed the static fallback
 }) {
   return (
     <section className="work-section overflow-x-hidden">
@@ -34,7 +33,7 @@ export default function SelectedWorkSection({
                 project={project}
                 variant="homepage"
                 className={isOdd ? "lg:items-end" : "lg:items-start"}
-                slideDirection={isOdd ? "right" : "left"} // 🔥 THIS PASSES THE DIRECTION
+                slideDirection={isOdd ? "right" : "left"}
               />
             );
           })}

@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createProject, updateProject } from "@/actions/project-actions";
+import ImageUpload from "@/components/admin/ImageUpload";
+import MultiImageUpload from "@/components/admin/MultiImageUpload"; 
 
 export default function ProjectForm({
   initialData = null,
@@ -27,6 +29,7 @@ export default function ProjectForm({
     solution: initialData?.solution || "",
     results: initialData?.results || "",
     conclusion: initialData?.conclusion || "",
+    galleryImages: initialData?.galleryImages || [],
   });
 
   const handleChange = (
@@ -130,16 +133,10 @@ export default function ProjectForm({
       </div>
 
       <div className="flex flex-col gap-2 mb-8">
-        <label className="text-sm text-gray-400 font-medium">
-          Hero Image URL
-        </label>
-        <input
-          required
-          name="imageUrl"
+        <label className="text-sm text-gray-400 font-medium">Hero Image</label>
+        <ImageUpload
           value={formData.imageUrl}
-          onChange={handleChange}
-          placeholder="/assets/images/work-1.png"
-          className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+          onChange={(url) => setFormData({ ...formData, imageUrl: url })}
         />
       </div>
 
@@ -202,6 +199,18 @@ export default function ProjectForm({
             value={formData.conclusion}
             onChange={handleChange}
             className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2 mb-8">
+          <label className="text-sm text-gray-400 font-medium">
+            Gallery Images (For case study body)
+          </label>
+          <MultiImageUpload
+            value={formData.galleryImages}
+            onChange={(urls) =>
+              setFormData({ ...formData, galleryImages: urls })
+            }
           />
         </div>
       </div>
