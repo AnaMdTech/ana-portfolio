@@ -3,15 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/lib/data";
+import { getProjectBySlug } from "@/actions/project-actions";
 
+// Dynamic metadata generated from the database
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = PROJECTS.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return { title: "Project Not Found | AnaMd" };
@@ -29,7 +30,9 @@ export default async function WorkDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = PROJECTS.find((p) => p.slug === slug);
+
+  // Fetch from Supabase instead of lib/data.ts
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
@@ -98,16 +101,11 @@ export default async function WorkDetailPage({
           <p className="case-overview-text">{project.overview}</p>
 
           <div className="case-narrative-wrapper">
-            <p>
-              In the world of high-performance digital products, a website must
-              not only reflect the brand’s energy but also deliver an intuitive,
-              compelling experience that keeps visitors hooked.
-            </p>
 
             <h3 className="case-section-heading">Challenges</h3>
             <p>{project.challenges}</p>
 
-            {project.galleryImages[0] && (
+            {project.galleryImages && project.galleryImages[0] && (
               <div className="case-gallery-box">
                 <Image
                   src={project.galleryImages[0]}
@@ -125,7 +123,7 @@ export default async function WorkDetailPage({
             <h3 className="case-section-heading">Results</h3>
             <p>{project.results}</p>
 
-            {project.galleryImages[1] && (
+            {project.galleryImages && project.galleryImages[1] && (
               <div className="case-gallery-box">
                 <Image
                   src={project.galleryImages[1]}

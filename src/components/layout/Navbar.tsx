@@ -24,6 +24,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Hide the public navbar completely on all admin routes
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   const toggleMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMobileMenuOpen(false);
 

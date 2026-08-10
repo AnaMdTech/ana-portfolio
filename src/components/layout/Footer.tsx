@@ -1,7 +1,16 @@
+'use client';
+
 import Link from "next/link";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/data"; 
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <footer className="footer-wrapper">
       <h1 className="footer-giant-text">let&apos;s connect</h1>

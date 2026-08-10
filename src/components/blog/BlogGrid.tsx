@@ -4,12 +4,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BLOG_POSTS } from "@/lib/data";
 
-export default function BlogGrid() {
+// Now accepting live 'posts' directly from the page
+export default function BlogGrid({ posts }: { posts: any[] }) {
   return (
     <div className="blog-grid">
-      {BLOG_POSTS.map((post, idx) => {
+      {posts.map((post, idx) => {
         const isEven = idx % 2 === 0;
         const initialX = isEven ? -50 : 50;
 

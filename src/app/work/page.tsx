@@ -2,7 +2,10 @@ import React from "react";
 import type { Metadata } from "next";
 import PageHeader from "@/components/shared/PageHeader";
 import ProjectCard from "@/components/shared/ProjectCard";
-import { PROJECTS } from "@/lib/data";
+import { getProjects } from "@/actions/project-actions";
+
+// Ensures this page always fetches fresh data from the database
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Selected Work | AnaMd",
@@ -10,7 +13,10 @@ export const metadata: Metadata = {
     "Explore responsive websites, mobile apps, and UI/UX design systems created by AnaMd.",
 };
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  // Fetch from Supabase backend
+  const projects = await getProjects();
+
   return (
     <section className="work-page-section">
       {/* Massive Page Heading */}
@@ -18,7 +24,7 @@ export default function WorkPage() {
 
       {/* Responsive 2-Column Grid */}
       <div className="work-grid-container">
-        {PROJECTS.map((project, idx) => (
+        {projects.map((project, idx) => (
           <ProjectCard
             key={project.id}
             project={project}
