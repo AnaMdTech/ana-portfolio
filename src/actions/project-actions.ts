@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { PROJECTS } from "@/lib/data";
 
 // 1. Fetch all projects
 export async function getProjects() {
@@ -11,8 +12,15 @@ export async function getProjects() {
     .select("*")
     .order("created_at", { ascending: false });
   if (error) {
-    console.error("Error fetching projects:", error);
-    return [];
+    console.warn(
+      "Supabase projects request failed; using local fallback:",
+      error.message,
+    );
+    return PROJECTS;
+  }
+  if (data.length === 0) {
+    console.warn("No projects found in Supabase; using local project data.");
+    return PROJECTS;
   }
   return data;
 }
@@ -39,7 +47,17 @@ export async function getProjectBySlug(slug: string) {
     .select("*")
     .eq("slug", slug)
     .single();
-  if (error) return null;
+  if (error) {
+    if (error.code === "PGRST116") {
+      return PROJECTS.find((project) => project.slug === slug) ?? null;
+    }
+
+    console.warn(
+      "Supabase project request failed; using local fallback:",
+      error.message,
+    );
+    return PROJECTS.find((project) => project.slug === slug) ?? null;
+  }
   return data;
 }
 

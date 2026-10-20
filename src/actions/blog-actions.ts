@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { BLOG_POSTS } from "@/lib/data";
 
 export async function getBlogs() {
   const supabase = await createClient();
@@ -10,8 +11,15 @@ export async function getBlogs() {
     .select("*")
     .order("created_at", { ascending: false });
   if (error) {
-    console.error("Error fetching blogs:", error);
-    return [];
+    console.warn(
+      "Supabase blog posts request failed; using local fallback:",
+      error.message,
+    );
+    return BLOG_POSTS;
+  }
+  if (data.length === 0) {
+    console.warn("No blog posts found in Supabase; using local blog data.");
+    return BLOG_POSTS;
   }
   return data;
 }
@@ -34,7 +42,17 @@ export async function getBlogBySlug(slug: string) {
     .select("*")
     .eq("slug", slug)
     .single();
-  if (error) return null;
+  if (error) {
+    if (error.code === "PGRST116") {
+      return BLOG_POSTS.find((post) => post.slug === slug) ?? null;
+    }
+
+    console.warn(
+      "Supabase blog post request failed; using local fallback:",
+      error.message,
+    );
+    return BLOG_POSTS.find((post) => post.slug === slug) ?? null;
+  }
   return data;
 }
 
