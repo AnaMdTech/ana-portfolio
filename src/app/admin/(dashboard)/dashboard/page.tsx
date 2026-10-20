@@ -10,8 +10,7 @@ export default function AdminDashboardPage() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Manage Projects Card */}
-        <div className="bg-[#131315] border border-gray-800 rounded-3xl p-8 hover:border-gray-600 transition-colors flex flex-col justify-between h-64">
+        <div className="bg-card border border-gray-800 rounded-3xl p-8 hover:border-gray-600 transition-colors flex flex-col justify-between h-64">
           <div>
             <h3 className="text-2xl font-bold mb-2">Projects</h3>
             <p className="text-gray-400">
@@ -21,14 +20,13 @@ export default function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/projects"
-            className="inline-block bg-white/[0.08] border border-gray-600 hover:bg-white hover:text-black text-white px-6 py-3 rounded-full font-medium text-center transition-all w-fit"
+            className="inline-block bg-white/8 border border-gray-600 hover:bg-white hover:text-black text-white px-6 py-3 rounded-full font-medium text-center transition-all w-fit"
           >
             Manage Projects →
           </Link>
         </div>
 
-        {/* Manage Blog Card */}
-        <div className="bg-[#131315] border border-gray-800 rounded-3xl p-8 hover:border-gray-600 transition-colors flex flex-col justify-between h-64">
+        <div className="bg-card border border-gray-800 rounded-3xl p-8 hover:border-gray-600 transition-colors flex flex-col justify-between h-64">
           <div>
             <h3 className="text-2xl font-bold mb-2">Blog Posts</h3>
             <p className="text-gray-400">
@@ -37,7 +35,7 @@ export default function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/blog"
-            className="inline-block bg-white/[0.08] border border-gray-600 hover:bg-white hover:text-black text-white px-6 py-3 rounded-full font-medium text-center transition-all w-fit"
+            className="inline-block bg-white/8 border border-gray-600 hover:bg-white hover:text-black text-white px-6 py-3 rounded-full font-medium text-center transition-all w-fit"
           >
             Manage Blog →
           </Link>

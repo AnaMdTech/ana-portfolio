@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// Now accepting live 'posts' directly from the page
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function BlogGrid({ posts }: { posts: any[] }) {
   return (
     <div className="blog-grid">
@@ -23,7 +23,6 @@ export default function BlogGrid({ posts }: { posts: any[] }) {
             className="blog-card group flex flex-col justify-between"
           >
             <div className="flex flex-col gap-5">
-              {/* Image Thumbnail */}
               <Link href={`/blog/${post.slug}`} className="blog-card-img-box">
                 <Image
                   src={post.imageUrl}
@@ -34,22 +33,18 @@ export default function BlogGrid({ posts }: { posts: any[] }) {
                 />
               </Link>
 
-              {/* Category Badge & Reading Time */}
               <div className="blog-card-meta-row">
                 <span className="blog-badge">{post.category}</span>
                 <span>{post.readTime}</span>
               </div>
 
-              {/* Article Title */}
               <Link href={`/blog/${post.slug}`}>
                 <h2 className="blog-card-title">{post.title}</h2>
               </Link>
 
-              {/* Excerpt */}
               <p className="blog-card-excerpt">{post.excerpt}</p>
             </div>
 
-            {/* Publication Date & Read More Link */}
             <div className="blog-card-footer">
               <span className="text-sm text-gray-500 font-inter">
                 {post.date}

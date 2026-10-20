@@ -8,13 +8,13 @@ import ImageUpload from "@/components/admin/ImageUpload";
 export default function BlogForm({
   initialData = null,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialData?: any;
 }) {
   const router = useRouter();
   const isEditing = !!initialData;
   const [isPending, setIsPending] = useState(false);
 
-  // Convert array back to a string with double line breaks for editing
   const initialContent = initialData?.content
     ? initialData.content.join("\n\n")
     : "";
@@ -42,7 +42,6 @@ export default function BlogForm({
     e.preventDefault();
     setIsPending(true);
 
-    // Convert string of paragraphs back into an array for Supabase
     const contentArray = formData.content
       .split("\n\n")
       .map((p:string ) => p.trim())
@@ -69,7 +68,7 @@ export default function BlogForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#131315] border border-gray-800 rounded-3xl p-8 max-w-4xl shadow-2xl"
+      className="bg-card border border-gray-800 rounded-3xl p-8 max-w-4xl shadow-2xl"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="flex flex-col gap-2">
@@ -81,7 +80,7 @@ export default function BlogForm({
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -94,7 +93,7 @@ export default function BlogForm({
             value={formData.slug}
             onChange={handleChange}
             placeholder="e.g. why-expo"
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -105,7 +104,7 @@ export default function BlogForm({
             value={formData.date}
             onChange={handleChange}
             placeholder="August 2026"
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -116,7 +115,7 @@ export default function BlogForm({
             value={formData.readTime}
             onChange={handleChange}
             placeholder="6 min read"
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -127,7 +126,7 @@ export default function BlogForm({
             value={formData.category}
             onChange={handleChange}
             placeholder="Mobile Dev"
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -152,7 +151,7 @@ export default function BlogForm({
             rows={2}
             value={formData.excerpt}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -165,7 +164,7 @@ export default function BlogForm({
             rows={3}
             value={formData.leadParagraph}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -178,7 +177,7 @@ export default function BlogForm({
             rows={8}
             value={formData.content}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none font-mono text-sm"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none font-mono text-sm"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -191,7 +190,7 @@ export default function BlogForm({
             rows={2}
             value={formData.takeaway}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
       </div>

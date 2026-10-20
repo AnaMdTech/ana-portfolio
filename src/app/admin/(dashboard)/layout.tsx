@@ -8,9 +8,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#09090B] text-white flex flex-col md:flex-row">
-      {/* Sidebar Navigation - Fixed on Desktop */}
-      <aside className="w-full md:w-64 md:fixed md:top-0 md:left-0 md:h-screen bg-[#131315] border-r border-gray-800 p-6 flex flex-col justify-between z-40 overflow-y-auto">
+    <div className="min-h-screen bg-background text-white flex flex-col md:flex-row">
+      <aside className="w-full md:w-64 md:fixed md:top-0 md:left-0 md:h-screen bg-card border-r border-gray-800 p-6 flex flex-col justify-between z-40 overflow-y-auto">
         <div>
           <h2 className="text-2xl font-bold text-white mb-8">
             AnaMd<span className="text-blue-500">.Admin</span>
@@ -37,7 +36,6 @@ export default function AdminLayout({
           </nav>
         </div>
 
-        {/* Logout Form triggering Server Action */}
         <form action={logoutAction} className="mt-8 md:mt-0">
           <button
             type="submit"
@@ -48,7 +46,6 @@ export default function AdminLayout({
         </form>
       </aside>
 
-      {/* Main Content Area - Scrollable with left margin offset for the fixed sidebar */}
       <main className="flex-1 p-6 md:p-12 md:ml-64 min-h-screen">
         {children}
       </main>

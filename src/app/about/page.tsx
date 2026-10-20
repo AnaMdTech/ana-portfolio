@@ -6,7 +6,6 @@ import { motion, Variants } from "framer-motion";
 import CTASection from "@/components/shared/CTASection";
 import { ABOUT_PILLARS } from "@/lib/data";
 
-// Stagger container for pillars grid
 const gridVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -29,7 +28,6 @@ const cardVariants: Variants = {
 export default function AboutPage() {
   return (
     <section className="about-page-section">
-      {/* 1. Page Header & Editorial Bio */}
       <div className="about-hero-wrapper">
         <motion.h1
           className="about-title-main"
@@ -61,7 +59,6 @@ export default function AboutPage() {
         </motion.div>
       </div>
 
-      {/* 2. Primary Portrait / Visual Showcase */}
       <div className="about-portrait-section">
         <motion.div
           className="about-portrait-card group"
@@ -81,9 +78,8 @@ export default function AboutPage() {
           <div className="about-portrait-overlay" />
         </motion.div>
 
-        {/* Founder Quote / Philosophy */}
         <motion.blockquote
-          className="text-center max-w-[840px]"
+          className="text-center max-w-210"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -98,7 +94,6 @@ export default function AboutPage() {
         </motion.blockquote>
       </div>
 
-      {/* 3. Why Work With Me? (Value Pillars Grid) */}
       <div className="about-pillars-section">
         <div className="about-pillars-container">
           <motion.div
@@ -139,7 +134,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* 4. Bottom Call-to-Action Bar */}
       <CTASection />
     </section>
   );

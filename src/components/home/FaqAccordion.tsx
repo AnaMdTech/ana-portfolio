@@ -14,7 +14,6 @@ export default function FaqAccordion() {
   return (
     <section className="faq-section">
       <div className="flex flex-col gap-10">
-        {/* Animated Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

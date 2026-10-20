@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import CTASection from "@/components/shared/CTASection";
-import { getBlogBySlug } from "@/actions/blog-actions"; // <-- Using Supabase Action
+import { getBlogBySlug } from "@/actions/blog-actions"; 
 
 export async function generateMetadata({
   params,

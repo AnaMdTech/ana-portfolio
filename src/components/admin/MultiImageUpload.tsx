@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState } from "react";
@@ -63,7 +64,7 @@ export default function MultiImageUpload({
           {value.map((url, index) => (
             <div
               key={index}
-              className="relative w-full h-32 rounded-xl overflow-hidden border border-gray-800 bg-[#09090B] group"
+              className="relative w-full h-32 rounded-xl overflow-hidden border border-gray-800 bg-background group"
             >
               <Image
                 src={url}
@@ -86,7 +87,7 @@ export default function MultiImageUpload({
       )}
 
       {/* Upload Button */}
-      <div className="relative w-full h-32 rounded-xl border-2 border-dashed border-gray-800 bg-[#09090B] flex flex-col items-center justify-center hover:border-gray-600 transition-colors mt-2">
+      <div className="relative w-full h-32 rounded-xl border-2 border-dashed border-gray-800 bg-background flex flex-col items-center justify-center hover:border-gray-600 transition-colors mt-2">
         <svg
           fill="none"
           viewBox="0 0 24 24"

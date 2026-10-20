@@ -35,7 +35,6 @@ export default async function WorkDetailPage({
     notFound();
   }
 
-  // Split the overview string into an array of paragraphs wherever you pressed Enter twice
   const overviewParagraphs = project.overview
     .split("\n\n")
     .map((p: string) => p.trim())
@@ -43,7 +42,6 @@ export default async function WorkDetailPage({
 
   return (
     <article className="case-article">
-      {/* 1. Hero Cover Section */}
       <div className="case-hero-container">
         <Image
           src={project.imageUrl}
@@ -67,9 +65,7 @@ export default async function WorkDetailPage({
         </div>
       </div>
 
-      {/* 2. Responsive 2-Column Case Study Content */}
       <div className="case-body-container">
-        {/* Left Sidebar */}
         <aside className="case-sidebar">
           <div>
             <p className="case-sidebar-label">Client</p>
@@ -95,9 +91,7 @@ export default async function WorkDetailPage({
           )}
         </aside>
 
-        {/* Right Main Column */}
         <div className="case-main-content">
-          {/* MAPPED OVERVIEW PARAGRAPHS */}
           {overviewParagraphs.map((paragraph: string, index: number) => (
             <p
               key={index}

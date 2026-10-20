@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getProjects } from "@/actions/project-actions";
 import ProjectsTable from "./ProjectsTable";
 
-// Revalidate this page dynamically so it always shows fresh data
 export const dynamic = "force-dynamic";
 
 export default async function AdminProjectsPage() {
@@ -26,7 +25,6 @@ export default async function AdminProjectsPage() {
         </Link>
       </div>
 
-      {/* Render our interactive client table */}
       <ProjectsTable projects={projects} />
     </div>
   );

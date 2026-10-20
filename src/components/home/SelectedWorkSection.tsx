@@ -7,12 +7,11 @@ import { ProjectData } from "@/types";
 export default function SelectedWorkSection({
   projects,
 }: {
-  projects: ProjectData[]; // Removed the static fallback
+  projects: ProjectData[];
 }) {
   return (
     <section className="work-section overflow-x-hidden">
       <div className="w-full">
-        {/* Animated Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +22,6 @@ export default function SelectedWorkSection({
           <h2 className="work-header-title">Selected work</h2>
         </motion.div>
 
-        {/* Project List */}
         <div className="work-list-wrapper w-full">
           {projects.map((project, idx) => {
             const isOdd = idx % 2 !== 0;

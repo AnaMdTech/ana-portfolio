@@ -67,12 +67,9 @@ export default function ContactPage() {
 
   return (
     <section className="contact-page-section">
-      {/* 1. Massive Page Header */}
       <PageHeader title="Contact" />
 
-      {/* 2. Main Contact Container */}
       <div className="contact-main-container">
-        {/* Intro Paragraph with Entrance Animation */}
         <motion.p
           className="contact-intro-lead"
           initial={{ opacity: 0, y: 25 }}
@@ -83,7 +80,6 @@ export default function ContactPage() {
           say hello, I&apos;m all ears.
         </motion.p>
 
-        {/* Direct Contact Links Row */}
         <motion.div
           className="contact-links-row"
           initial={{ opacity: 0, y: 30 }}
@@ -108,7 +104,6 @@ export default function ContactPage() {
           </div>
         </motion.div>
 
-        {/* 3. Interactive Contact Form with Entrance Animation */}
         <div className="flex justify-start">
           <motion.form
             onSubmit={handleSubmit}
@@ -137,7 +132,6 @@ export default function ContactPage() {
               <div className="contact-error-box">{errorMessage}</div>
             ) : null}
 
-            {/* Name Field */}
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="contact-input-label">
                 Name
@@ -153,7 +147,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Email Field */}
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="contact-input-label">
                 Email
@@ -169,7 +162,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Question / Message Field */}
             <div className="flex flex-col gap-2">
               <label htmlFor="question" className="contact-input-label">
                 Question
@@ -185,7 +177,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Submit Button with Micro-Interaction */}
             <motion.button
               type="submit"
               disabled={isSubmitting}

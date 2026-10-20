@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState } from "react";
@@ -25,7 +26,7 @@ export default function ProjectsTable({ projects }: { projects: any[] }) {
 
   return (
     <>
-      <div className="bg-[#131315] border border-gray-800 rounded-3xl overflow-hidden shadow-2xl">
+      <div className="bg-card border border-gray-800 rounded-3xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -40,7 +41,7 @@ export default function ProjectsTable({ projects }: { projects: any[] }) {
               {projects.map((project) => (
                 <tr
                   key={project.id}
-                  className="hover:bg-white/[0.04] transition-colors group cursor-pointer"
+                  className="hover:bg-white/4 transition-colors group cursor-pointer"
                   onClick={() => setSelectedProject(project)}
                 >
                   <td className="p-6 flex items-center gap-4">
@@ -122,8 +123,8 @@ export default function ProjectsTable({ projects }: { projects: any[] }) {
 
       {/* CUSTOM DELETE CONFIRMATION MODAL */}
       {projectToDelete && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#131315] border border-gray-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl relative">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-card border border-gray-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl relative">
             <h3 className="text-xl font-bold text-white mb-2">
               Delete Project?
             </h3>
@@ -151,11 +152,9 @@ export default function ProjectsTable({ projects }: { projects: any[] }) {
         </div>
       )}
 
-      {/* PROJECT DETAILS MODAL (Your existing one) */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          {/* ... (Keep your exact existing Details Modal code here) ... */}
-          <div className="bg-[#131315] border border-gray-800 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative">
+          <div className="bg-card border border-gray-800 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative">
             <div className="relative w-full h-48 sm:h-64">
               <Image
                 src={selectedProject.imageUrl}
@@ -163,7 +162,7 @@ export default function ProjectsTable({ projects }: { projects: any[] }) {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#131315] to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-card to-transparent" />
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 bg-black/50 hover:bg-black p-2 rounded-full text-white backdrop-blur-md transition-all"

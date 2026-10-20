@@ -9,13 +9,13 @@ import MultiImageUpload from "@/components/admin/MultiImageUpload";
 export default function ProjectForm({
   initialData = null,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialData?: any;
 }) {
   const router = useRouter();
   const isEditing = !!initialData;
   const [isPending, setIsPending] = useState(false);
 
-  // Initialize form with data if editing, or empty strings if creating
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     slug: initialData?.slug || "",
@@ -58,10 +58,9 @@ export default function ProjectForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#131315] border border-gray-800 rounded-3xl p-8 max-w-4xl shadow-2xl"
+      className="bg-card border border-gray-800 rounded-3xl p-8 max-w-4xl shadow-2xl"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {/* Basic Info */}
         <div className="flex flex-col gap-2">
           <label className="text-sm text-gray-400 font-medium">
             Project Title
@@ -71,7 +70,7 @@ export default function ProjectForm({
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -84,7 +83,7 @@ export default function ProjectForm({
             value={formData.slug}
             onChange={handleChange}
             placeholder="e.g. burger-bite"
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -96,7 +95,7 @@ export default function ProjectForm({
             name="client"
             value={formData.client}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -106,7 +105,7 @@ export default function ProjectForm({
             name="role"
             value={formData.role}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -116,7 +115,7 @@ export default function ProjectForm({
             name="year"
             value={formData.year}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -127,7 +126,7 @@ export default function ProjectForm({
             name="liveUrl"
             value={formData.liveUrl}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
       </div>
@@ -150,7 +149,7 @@ export default function ProjectForm({
             rows={3}
             value={formData.overview}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -163,7 +162,7 @@ export default function ProjectForm({
             rows={3}
             value={formData.challenges}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -174,7 +173,7 @@ export default function ProjectForm({
             rows={3}
             value={formData.solution}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -185,7 +184,7 @@ export default function ProjectForm({
             rows={3}
             value={formData.results}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -198,7 +197,7 @@ export default function ProjectForm({
             rows={2}
             value={formData.conclusion}
             onChange={handleChange}
-            className="w-full p-3 bg-[#09090B] border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
+            className="w-full p-3 bg-background border border-gray-800 text-white rounded-xl focus:border-blue-500 outline-none"
           />
         </div>
 

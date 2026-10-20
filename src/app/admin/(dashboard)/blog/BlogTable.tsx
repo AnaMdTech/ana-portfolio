@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState } from "react";
@@ -25,7 +26,7 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
 
   return (
     <>
-      <div className="bg-[#131315] border border-gray-800 rounded-3xl overflow-hidden shadow-2xl">
+      <div className="bg-card border border-gray-800 rounded-3xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -40,7 +41,7 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
               {blogs.map((blog) => (
                 <tr
                   key={blog.id}
-                  className="hover:bg-white/[0.04] transition-colors group cursor-pointer"
+                  className="hover:bg-white/4 transition-colors group cursor-pointer"
                   onClick={() => setSelectedBlog(blog)}
                 >
                   <td className="p-6 flex items-center gap-4">
@@ -73,7 +74,6 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
                   </td>
                   <td className="p-6 text-right">
                     <div className="flex items-center justify-end gap-3 opacity-80 group-hover:opacity-100 transition-opacity">
-                      {/* EDIT BUTTON */}
                       <Link
                         href={`/admin/blog/${blog.id}`}
                         onClick={(e) => e.stopPropagation()}
@@ -94,7 +94,6 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
                         </svg>
                       </Link>
 
-                      {/* DELETE BUTTON */}
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
@@ -125,10 +124,9 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
         </div>
       </div>
 
-      {/* CUSTOM DELETE CONFIRMATION MODAL */}
       {blogToDelete && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#131315] border border-gray-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl relative">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-card border border-gray-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl relative">
             <h3 className="text-xl font-bold text-white mb-2">Delete Post?</h3>
             <p className="text-gray-400 mb-6 text-sm">
               Are you sure you want to delete this blog post? This action cannot
@@ -154,10 +152,9 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
         </div>
       )}
 
-      {/* DETAILS MODAL */}
       {selectedBlog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#131315] border border-gray-800 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative">
+          <div className="bg-card border border-gray-800 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative">
             <div className="relative w-full h-48 sm:h-64">
               <Image
                 src={selectedBlog.imageUrl}
@@ -165,7 +162,7 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#131315] to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-card to-transparent" />
               <button
                 onClick={() => setSelectedBlog(null)}
                 className="absolute top-4 right-4 bg-black/50 hover:bg-black p-2 rounded-full text-white backdrop-blur-md transition-all"
@@ -202,7 +199,7 @@ export default function BlogTable({ blogs }: { blogs: any[] }) {
                 <div>
                   <h4 className="text-white font-bold mb-1">Takeaway</h4>
                   <p className="italic text-blue-400">
-                    "{selectedBlog.takeaway}"
+                    &quot;{selectedBlog.takeaway}&quot;
                   </p>
                 </div>
               </div>

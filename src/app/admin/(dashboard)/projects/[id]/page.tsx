@@ -3,16 +3,13 @@ import ProjectForm from "../ProjectForm";
 import { getProjectById } from "@/actions/project-actions";
 import { notFound } from "next/navigation";
 
-// Next.js 15 requires params to be a Promise
 export default async function EditProjectPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  // 1. Await the params first!
   const resolvedParams = await params;
 
-  // 2. Now fetch the project using the resolved ID
   const project = await getProjectById(resolvedParams.id);
 
   if (!project) {

@@ -26,7 +26,6 @@ export default function PageHeader({
         isSplit ? "page-header-split" : "text-center"
       } ${className}`}
     >
-      {/* Title Column — Slides up and fades in */}
       <motion.h1
         className={`page-header-title ${isSplit ? "md:w-1/2" : "w-full"}`}
         initial={{ opacity: 0, y: 40 }}
@@ -37,7 +36,6 @@ export default function PageHeader({
         <span className="block">{title}</span>
       </motion.h1>
 
-      {/* Children / Right-Side Bio Note — Slides in from right */}
       {children && (
         <motion.div
           className={`page-header-note ${

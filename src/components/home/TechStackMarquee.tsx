@@ -35,7 +35,6 @@ export default function TechStackMarquee() {
   return (
     <section className="marquee-section">
       <div className="container mx-auto p-4">
-        {/* Top Row: Scrolls Left */}
         <div className="marquee-row-wrapper mb-10">
           <div className="scroll-left-loop flex gap-4 whitespace-nowrap">
             {[...TECH_STACK_TOP, ...TECH_STACK_TOP].map((tech, i) => (
@@ -50,7 +49,6 @@ export default function TechStackMarquee() {
           <div className="marquee-fade-overlay" />
         </div>
 
-        {/* Bottom Row: Scrolls Right */}
         <div className="marquee-row-wrapper">
           <div className="scroll-right-loop flex gap-4 whitespace-nowrap">
             {[...TECH_STACK_BOTTOM, ...TECH_STACK_BOTTOM].map((tech, i) => (
